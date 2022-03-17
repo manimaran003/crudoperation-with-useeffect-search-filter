@@ -20,7 +20,9 @@ const TableData = (props) => {
     const [searchName, setSearchName] = useState('')
     const [filterData, setFilterData] = useState([])
     const [newData,setData]=useState([])
-
+    //this is component did update when we change the search name each time its going
+    //to render. so i used dependency
+    //without dependency means i achived the api call like component did mount
     useEffect(() => {
         if (searchName.length >= 3) {
             let filter = data.filter((item) => {
@@ -28,6 +30,7 @@ const TableData = (props) => {
             })
             setFilterData(filter)
         }
+        //clean up the input box and pass a old data from api so i used.
         return () => {
             setFilterData(data)
         }
